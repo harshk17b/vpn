@@ -4,14 +4,13 @@
 if [ $# -eq 2 ]
 then
   # Check if tailscale key starts with tskey-
-  if [ $1 =~ ^"tskey-"* ]
+  if [[ $1 =~ ^"tskey-"* ]]
   then
     # Get the Linux distribution code name
     release=$(cat /etc/lsb-release | grep "DISTRIB_CODENAME" | cut -d "=" -f2)
 
     # Check if tailscale is not installed
-    tailscaleStaus=$(tailscale status)
-    if [ $tailscaleStaus == *"command not found"* ]
+    if ! tailscale status
     then
       # TailScale
       # Add tailscale's pacakage signing key and repository
@@ -27,8 +26,7 @@ then
     sudo tailscale up --authkey $1
     
     # Check if nextdns is not installed
-    nextdnsStaus=$(nextdns version)
-    if [ $nextdnsStaus == *"command not found"* ]
+    if ! nextdns version
     then
       # NextDNS
       # Add NextDNS pacakage signing key and repository
