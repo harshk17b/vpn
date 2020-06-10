@@ -4,7 +4,7 @@ Configure nextdns and tailscale on linux (specifically Ubuntu) automatically
 Script has to be run as sudo. It takes two arguments TailScale Auth Token and NextDNS config id to setup both on an Ubuntu machine.
 
 To run:
-`chmod +x setup.sh && sudo ./setup.sh <tailscale_auth_token> <nextdns_config_id>`
+`sudo ./setup.sh <tailscale_auth_token> <nextdns_config_id>`
 
 # NextDNS
 
