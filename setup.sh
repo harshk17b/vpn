@@ -10,7 +10,7 @@ then
     release=$(cat /etc/lsb-release | grep "DISTRIB_CODENAME" | cut -d "=" -f2)
 
     # Check if tailscale is not installed
-    if ! tailscale status
+    if ! tailscale status > /dev/null
     then
       # TailScale
       # Add tailscale's pacakage signing key and repository
@@ -26,7 +26,7 @@ then
     sudo tailscale up --authkey $1
     
     # Check if nextdns is not installed
-    if ! nextdns version
+    if ! nextdns version > /dev/null
     then
       # NextDNS
       # Add NextDNS pacakage signing key and repository
